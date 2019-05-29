@@ -18,12 +18,11 @@ You have no upcoming trips. Start exploring ideas for your next trip.
 <ion-header>
   Current Trips
 </ion-header>
-  <ion-item>
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJlNcqSWMq7v0cfgWiyiNaZRLf_a-iMHfVqsAHuU6yvtODcG57"(click)="navToRental()">
+  <ion-item *ngFor ="let rental of rentals">
+    <div>{{rental.location}}</div>
+<img src="{{rental.image}}"(click)="navToRental()">
   </ion-item>
-  <ion-item>
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGYjJAAY2i35rR0U8Jo-G_zQwvRbbT1JWiG8ako3a3YZdUXe4V"(click)="navToRental()">
-  </ion-item>
+  
 </ion-list>
 </ion-content>
 

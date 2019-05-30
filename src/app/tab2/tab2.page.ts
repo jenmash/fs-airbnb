@@ -13,7 +13,7 @@ export class Tab2Page {
   ) {}
 
   navToTab1() {
-    this.navCtrl.navigateForward("tab1");
+    this.navCtrl.navigateForward("tabs/tabs/tab1");
   }
 
 }

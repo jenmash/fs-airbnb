@@ -1,14 +1,16 @@
-export class rental { 
+export class Rental { 
     public location: string;
-    public price: number; 
+    public price: string; 
     public accomodation: string;
     public image: string;
+    public id: number;
 
-    constructor (loc: string, p: number, room: string, img: string) {
-        this.location=loc;
-        this.price=p;
-        this.accomodation=room;
-        this.image=img;
+    constructor () {
+        this.id = 0;
+        this.location= "" ;
+        this.price= "";
+        this.accomodation= "";
+        this.image= "";
 
     }
 

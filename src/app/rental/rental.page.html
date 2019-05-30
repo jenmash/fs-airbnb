@@ -5,7 +5,10 @@
 
 <ion-header>
   <ion-toolbar>
-    <ion-title>rental details</ion-title>
+    <ion-title *ngIf="currentRental">Rental Details
+      {{currentRental.accomodation}}
+
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 

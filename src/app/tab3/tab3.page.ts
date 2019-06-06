@@ -16,6 +16,7 @@ export class Tab3Page {
   constructor(
     private navCtrl: NavController,
     private rentalService: RentalService
+    
   ) {
     console.log(this.rentalService);
     this.rentalService.getAllRentals();

@@ -9,30 +9,22 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginPage implements OnInit {
 
-  public users: any = {
+  public user: any = {
     firstname: "",
     lastname: "",
     email: "",
     password: ""
   }
-  public email: string = "";
-  public password: string = "";
 
-  constructor(
-    private navCtrl: NavController,
-    private http: HttpClient
-  ) 
-    
-  { }
+  constructor( private navCtrl: NavController, private http: HttpClient) {
+  }
 
-  navToTabs() {
-    // console.log(this.email, this.password);
-    // //  user = {
-    // //   email: this.email,
-    // //   password: this.password
-    // // };
+  public navToTabs() {
+    console.log('LOGIN: email: '+this.user.email+', password: '+this.user.password);
+    this.navCtrl.navigateForward("tabs/tabs/tab1");
 
-    // this.http.post("http://localhost:3000/users/authentication", user)
+    // FIXME I guess this code doesn't work?
+    // this.http.post("http://localhost:3000/users/authentication", this.user)
     //   .subscribe(
     //     response => {
     //       console.log(response);
@@ -43,15 +35,11 @@ export class LoginPage implements OnInit {
     //       alert(err.error.message);
     //     }
     //   );
-    this.navCtrl.navigateForward("tabs/tabs/tab1");
-    
-  }
-navToRegister() {
-  this.navCtrl.navigateForward("register");
-  
-}
-
-  ngOnInit() {
   }
 
+  navToRegister() {
+    this.navCtrl.navigateForward("register");
+  }
+
+  ngOnInit() { }
 }

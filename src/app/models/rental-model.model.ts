@@ -1,12 +1,14 @@
 interface RentalI {
   location: string,
-  price: string,
+  pricePerNight: string,
   accomodation: string,
-  image: string,
-  id: number,
+  description: string,
+  id: number
 }
 
-export class Rental implements RentalI { 
+export class Rental implements RentalI {
+  pricePerNight: string;
+  description: string; 
     public location: string;
     public price: string; 
     public accomodation: string;
@@ -16,9 +18,9 @@ export class Rental implements RentalI {
     constructor (data?: RentalI) {
       if (data) {
         this.location = data.location;
-        this.price = data.price;
+        this.price = data.pricePerNight;
         this.accomodation = data.accomodation;
-        this.image = data.image;
+        this.description = data.description;
         this.id = data.id;
       } else {
         this.id = 0;

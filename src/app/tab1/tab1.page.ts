@@ -3,6 +3,7 @@ import { NavController } from '@ionic/angular';
 import { Rental, User } from '../models/index';
 import { RentalService } from '../services/rental.service';
 import { HttpClient } from '@angular/common/http';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-tab1',
@@ -49,7 +50,16 @@ navToTab1() {
 
 navToRental(rental: Rental) {
   localStorage.setItem("rental_id", ""+rental.id);
-  this.navCtrl.navigateForward("rental")
+  this.navCtrl.navigateForward("rental", {
+    queryParams: {
+      rentalId: rental.id,
+      title: rental.id,
+      description: rental.description,
+      location: rental.location,
+      pricePerNight: rental.pricePerNight
+
+    }
+  })
   //   queryParams: {
   //     rentalId: rental.id
     }

@@ -34,10 +34,12 @@ export class RentalPage implements OnInit {
   ngOnInit() {
 
 
-    localStorage.getItem("rental_id");
+    var rentalId = parseInt(localStorage.getItem("rental_id"));
+    console.log("The rental id is: " + rentalId);
 
-    this.httpClient.get('http://localhost:3000/properties/:id').subscribe ( (response: any) => {
-      this.rentals = response;
+    this.httpClient.get('http://localhost:3000/properties/' + rentalId ).subscribe ( (response: any) => {
+      console.log(response);
+      this.currentRental = response[0];
     });
   
   }

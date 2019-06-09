@@ -3,6 +3,9 @@ import { Rental, User } from '../models/index';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { RentalService } from '../services/rental.service';
 import { NavController } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';
+
+
 
 @Component({
   selector: 'app-rental',
@@ -20,7 +23,8 @@ export class RentalPage implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private rentalService: RentalService,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private httpClient: HttpClient
   ){
 
     this.rentalService.getAllRentals();
@@ -30,27 +34,37 @@ export class RentalPage implements OnInit {
   ngOnInit() {
 
 
+    localStorage.getItem("rental_id");
 
-    let arrow = (data: any) => {
-      this.nameOfRental = data.params.rentalName;
-      this.rentalId = data.params.rentalId;
-
-
-
-      this.currentRental = 
-      this.rentalService.findRentalById(this.rentalId);
-    
-    if (!this.currentRental) {
-      alert("Rental not found!");
-      this.navCtrl.navigateBack("");
-    }
-  };
-
-  this.activatedRoute.queryParamMap.subscribe(
-    // receivedQueryParams,
-    arrow
-  );
-
+    this.httpClient.get('http://localhost:3000/properties/:id').subscribe ( (response: any) => {
+      this.rentals = response;
+    });
+  
   }
+    
+
+
+//     let arrow = (data: any) => {
+//       this.nameOfRental = data.params.rentalName;
+//       this.rentalId = data.params.rentalId;
+
+
+
+//       this.currentRental = 
+//       this.rentalService.findRentalById(this.rentalId);
+    
+//     if (!this.currentRental) {
+//       alert("Rental not found!");
+//       this.navCtrl.navigateBack("");
+//     }
+//   };
+
+//   this.activatedRoute.queryParamMap.subscribe(
+//     // receivedQueryParams,
+//     arrow
+//   );
+
+//   }
 
 }
+
